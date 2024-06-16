@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pair Code</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background: black;
+      color: #ffffff;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      z-index: -1;
+      animation: move-stars 100s linear infinite;
+    }
+
+    @keyframes move-stars {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 10000px; }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .box {
+      width: 500px;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    h3, h6 {
+      margin: 0 0 20px 0;
+    }
+
+    .centered-text {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .input-container {
+      display: flex;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 1rem;
+      padding: 0.3rem;
+      gap: 0.3rem;
+      max-width: 400px;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .input-container input {
+      border-radius: 0.8rem 0 0 0.8rem;
+      background: rgba(255, 255, 255, 0.9);
+      width: 100%;
+      flex-basis: 75%;
+      padding: 1rem;
+      border: none;
+      color: #000;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .input-container input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .input-container button {
+      flex-basis: 25%;
+      padding: 1rem;
+      background: #ff4b2b;
+      font-weight: 700;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      color: white;
+      border: none;
+      border-radius: 0 0.8rem 0.8rem 0;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .input-container button:hover {
+      background: #ff416c;
+    }
+
+    .taskbar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      text-align: center;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .taskbar a {
+      color: #ffffff;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 500px) {
+      .input-container {
+        flex-direction: column;
+      }
+
+      .input-container input {
+        border-radius: 0.8rem;
+      }
+
+      .input-container button {
+        padding: 0.4rem;
+        border-radius: 0.8rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .box {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .input-container input {
+        width: 100%;
+      }
+
+      .input-container button {
+        padding: 1rem;
+        width: 100%;
+      }
+    }
+
+    #waiting-message {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="container">
+    <div class="box" id="box">
+      <div id="text">
+        <i class="fa fa-user fa-2x"></i>
+        <h3 class="centered-text">WHATSAPP BOT PAIRING CODE</h3>
+        <h6 class="centered-text">Made By TheProfessor-295 🔥</h6>
+        <h6 class="centered-text">Enter Your Number with Country Code</h6>
+        <div class="input-container">
+          <input type="number" id="number" placeholder="923192173xxx">
+          <button id="submit">Submit</button>
+        </div>
+        <a id="waiting-message" class="centered-text">Please wait a while</a>
+        <br><br>
+        <main id="pair"></main>
+      </div>
+    </div>
+    <div class="taskbar">
+      <a href="https://youtube.com/@wasitech1" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+      <a href="https://wa.me/message/THZ3I25BYZM2E1" target="_blank"><i class="fab fa-whatsapp"></i> Contact Owner</a>
+      <a href="https://github.com/wasixd/WASI-MD" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
+      <a href="https://chat.whatsapp.com/FF6YuOZTAVB6Lu65cnY5BN" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
+      <a href="https://whatsapp.com/channel/0029VaDK8ZUDjiOhwFS1cP2j" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>
+      <a href="https://github.com/Itxxwasi" target="_blank"><i class="fab fa-github"></i> Plugins</a>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    const a = document.getElementById("pair");
+    const b = document.getElementById("submit");
+    const c = document.getElementById("number");
+
+    async function Copy() {
+      const text = document.getElementById("copy").innerText;
+      const obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style.color = "blue";
+      obj.style.fontWeight = "bold";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style.color = "white";
+        obj.style.fontWeight = "bold";
+      }, 500);
+    }
+
+    b.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!c.value) {
+        a.innerHTML = '<a style="color:white;font-weight:bold">Enter your WhatsApp number with Country Code</a><br><br>';
+      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<a style="color:red;font-weight:bold">Invalid Number</a><br><br>';
+      } else {
+        const Wasi_Tech = c.value.replace(/[^0-9]/g, "");
+        let bb = "";
+        let bbc = "";
+        const cc = Wasi_Tech.split('');
+        cc.forEach((a, index) => {
+          bbc += a;
+          if (bbc.length === 3 || bbc.length === 8) {
+            bb += " " + a;
+          } else {
+            bb += a;
+          }
+        });
+        c.type = "text";
+        c.value = "+" + bb;
+        c.style.color = "black";
+        c.style.fontSize = "20px";
+        a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
+        const { data } = await axios(`/code?number=${Wasi_Tech}`);
+        const code = data.code || "Service Unavailable";
+        a.innerHTML = `<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">${code}</span></font><br><br><br>`;
+      }
+    });
+  </script>
+</body>
+</html>
