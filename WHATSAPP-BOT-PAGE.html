@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whatsapp Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #0c0c0c; /* Dark background color */
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('https://media.giphy.com/media/8i4u5alB3xdBq/giphy.gif') repeat 0 0; /* Starry background image */
+      animation: animateStars 50s linear infinite;
+    }
+
+    @keyframes animateStars {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 100% 100%;
+      }
+    }
+
+    .content {
+      text-align: center;
+      z-index: 1;
+      color: white;
+    }
+
+    .btn-container {
+      display: grid;
+      grid-template-columns: repeat(3, 200px); /* 3 buttons per row */
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      --bg-color: #1e90ff; /* Sky blue background color */
+      --hover-bg-color: #87cefa; /* Lighter sky blue on hover */
+      --shadow-color: #4682b4; /* Shadow color */
+      --glow-color: #00bfff; /* Glowing effect color */
+      --font-color: white; /* Font color */
+      --font-hover-color: #0c0c0c; /* Font color on hover */
+      
+      width: 200px; /* Fixed width for equal-sized buttons */
+      height: 60px; /* Fixed height for equal-sized buttons */
+      padding: 1em 2em;
+      background-color: var(--bg-color);
+      color: var(--font-color);
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 20px var(--glow-color); /* Glowing shadow */
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--glow-color);
+      opacity: 0.7;
+      z-index: -1;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+
+    .btn:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+      opacity: 0.9;
+    }
+
+    .btn:hover {
+      background-color: var(--hover-bg-color);
+      color: var(--font-hover-color);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 30px var(--glow-color); /* Enhanced glowing shadow on hover */
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+      background-color: var(--hover-bg-color);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5), 0 0 20px var(--glow-color);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars"></div> <!-- Background div for moving stars -->
+
+  <div class="content">
+    <h1>Whatsapp Bot</h1>
+    <div class="btn-container">
+      <button onclick="window.open('/wasiqr')" class="btn">QR Code</button>
+      <button onclick="window.open('/pair')" class="btn">Pair Code</button>
+      <button onclick="window.open('https://github.com/wasixd/WASI-MD')" class="btn">Bot Repo</button>
+      <button onclick="window.open('https://github.com/wasixd/WASI-MD-PLUGINS')" class="btn">Plugins</button>
+      <button onclick="window.open('https://wa.me/923192173398')" class="btn">Contact Me</button>
+      <button onclick="window.open('https://chat.whatsapp.com/L14FfkAgFCN9eXGe5Sqjqt')" class="btn">Wa Group</button>
+      <button onclick="window.open('https://whatsapp.com/channel/0029VaDK8ZUDjiOhwFS1cP2j')" class="btn">Wa Channel</button>
+      <button onclick="window.open('https://instagram.com/itx_mee_wasi')" class="btn">Instagram</button>
+      <button onclick="window.open('https://youtube.com/@wasitech1')" class="btn">Youtube</button>
+    </div>
+  </div>
+
+</body>
+</html>
